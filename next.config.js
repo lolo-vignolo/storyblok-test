@@ -1,4 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  env: {
+    storyblokApiToken: process.env.STORYBLOK_API_TOKEN,
+  },
+  images: {
+    domains: ["a.storyblok.com"],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
