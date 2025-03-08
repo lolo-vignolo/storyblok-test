@@ -14,7 +14,7 @@ const Hero = ({ blok }: any) => {
       }}
     >
       <h1>{blok.title}</h1>
-      <img
+      <Image
         width={100}
         height={100}
         src={blok.image.filename}

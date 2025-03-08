@@ -1,22 +1,19 @@
+// src/app/page.tsx
 import { getStoryblokApi } from "@storyblok/react/rsc";
 import StoryblokStory from "@storyblok/react/story";
 
+// Este es un Server Component
 export default async function Home() {
-  const { data } = await fetchData();
-
-  return (
-    <div>
-      {/* story debería ser llamado block, antes lo era. Es lo que recibe cada componente en forma de param {blok} */}
-      <StoryblokStory story={data.story} />
-    </div>
-  );
-}
-
-export async function fetchData() {
-  let sbParams: { version: "draft" | "published" | undefined } = {
+  const sbParams: { version: "draft" | "published" | undefined } = {
     version: "draft",
   };
 
   const storyblokApi = getStoryblokApi();
-  return storyblokApi.get(`cdn/stories/home`, sbParams);
+  const { data } = await storyblokApi.get("cdn/stories/home", sbParams);
+
+  return (
+    <div>
+      <StoryblokStory story={data.story} />
+    </div>
+  );
 }
